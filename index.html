@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>My Map</title>
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="map"></div>
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-o9N1j7kPykxSgZ1GT2Wu/KYQoNfFdE2Fo8G3BC3r3Do="
+    crossorigin=""
+  ></script>
+
+  <script>
+    // Center on Hyderabad
+    const map = L.map('map').setView([17.3850, 78.4867], 12);
+
+    // Add OSM tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Example marker
+    L.marker([17.3850, 78.4867])
+      .addTo(map)
+      .bindPopup('<b>Hyderabad</b><br>This is a marker.')
+      .openPopup();
+  </script>
+</body>
+</html>
